@@ -7,14 +7,14 @@ services:
       POSTGRES_HOST: '0.0.0.0'
       POSTGRES_USER: 'ADMIN'
       POSTGRES_PASSWORD : 'PASS'
-    expose:
-      - "5432"
+    ports:
+      - "5432:5432"
   web:
     build: .
     command: python Borges/manage.py runserver 0.0.0.0:8000
     volumes:
       - .:/code
-    expose:
-      - "8000"
+    ports:
+      - "8000:8000"
     depends_on:
       - db
